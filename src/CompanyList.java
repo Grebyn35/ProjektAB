@@ -61,6 +61,7 @@ public class CompanyList {
         }
         WebElement logInButton = driver.findElement(By.xpath("/html/body/aza-app/div/main/div/aza-authentication-required/div/aza-card/div[1]/aza-login/div/aza-toggle-switch-view/div/aza-bank-id/form/div[1]/div[2]/button[1]"));
         logInButton.click();
+        System.out.println("Waiting for BankID login");
     }
 
 }

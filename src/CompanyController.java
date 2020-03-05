@@ -26,7 +26,7 @@ public class CompanyController {
 
     public void run() {
         compList = new CompanyList();
-        //compList.logIn();
+        compList.logIn();
         //dataBaseUpload();
     }
 }

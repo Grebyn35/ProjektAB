@@ -6,18 +6,9 @@ public class CompanyController {
     static ArrayList<Company> companyList = new ArrayList<Company>();
 
 
-
-    public void dataBaseConnection(){
-
-    }
-    public void dataBaseUpload(){
-        dataBaseConnection();
-
-    }
-
     public void run() {
         compList = new ScanCompany();
-        ;
+        
         compList.getList();
 
     }

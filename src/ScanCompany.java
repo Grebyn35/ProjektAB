@@ -45,24 +45,33 @@ public class ScanCompany {
         //System.out.println(currentHits);
         while(true) {
             System.out.println("Adding values...\n");
-            for (int i = 0; i < 100; i++) {
-                WebElement companyName = driver.findElement(By.xpath("//*[@id=" + i + "]/td[2]/a"));
-                WebElement companyValue = driver.findElement(By.xpath("//*[@id=" + i + "]/td[1]/span"));
+            for (int m = 0; m <= 30;) {
+                m++;
+                for (int i = 0; i < 100; i++) {
+                    WebElement companyName = driver.findElement(By.xpath("//*[@id=" + i + "]/td[2]/a"));
+                    WebElement companyValue = driver.findElement(By.xpath("//*[@id=" + i + "]/td[1]/span"));
 
-                if (tempCompanyName.contains(companyName.getText())) {
-                    Company.companyList.get(i).addValue(companyValue.getText());
-                } else {
-                    tempCompanyName.add(companyName.getText());
-                    Company company = new Company(companyName.getText());
-                    Company.companyList.get(i).addValue(companyValue.getText());
+                    if (tempCompanyName.contains(companyName.getText())) {
+                        Company.companyList.get(i).addValue(companyValue.getText());
+                        if(Company.companyList.get(i).valueList.size()>=30){
+                            Company.companyList.get(i).valueList.remove(0);
+                        }
+                    } else {
+                        tempCompanyName.add(companyName.getText());
+                        Company company = new Company(companyName.getText());
+                        Company.companyList.get(i).addValue(companyValue.getText());
+                    }
+                    if(m==30){
+                        m=+0;
+                    }
+
                 }
+                System.out.println(Company.companyList.toString());
+                try {
+                    Thread.sleep(60000);
+                } catch (InterruptedException e) {
 
-            }
-            System.out.println(Company.companyList.toString());
-            try {
-                Thread.sleep(5000);
-            }catch (InterruptedException e){
-
+                }
             }
         }
 

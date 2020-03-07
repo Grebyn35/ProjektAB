@@ -52,6 +52,7 @@ public class Company {
         averageValue = tempAverageValue / valueList.size();
 
     }
+    double spikeNumber = 0;
     double tempNumber = 0;
     public void calculateInconsistencyValue(Double value){
         if(tempNumber==0){
@@ -66,9 +67,22 @@ public class Company {
 
             }
             tempNumber = value;
+            if(spikeNumber>tempNumber){
+                spikeNumber++;
+            }
+            else if(spikeNumber<tempNumber){
+                spikeNumber++;
+            }
+            inconsistencyValue *= spikeNumber;
     }
     public void calculateInconScore(){
         inconScore = (averageValue / (averageValue - inconsistencyValue));
+    }
+    public void stopLoss() {
+        //if(averageValue > currentValue too much){
+    //inconsistencyValue -=1?
+    //}
+
     }
 
 }

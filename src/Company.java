@@ -8,6 +8,10 @@ public class Company {
     double minValue = 5000;
     double inconsistencyValue = 0;
     double inconScore = 0;
+    double currentValue = 0;
+    double sma5Value = 0;
+    double sma15Value = 0;
+    double sma50Value = 0;
     ArrayList<Double> valueList = new ArrayList<Double>();
     public static List<Company> companyList = new ArrayList<Company>();
 
@@ -67,21 +71,29 @@ public class Company {
 
             }
             tempNumber = value;
-            if(spikeNumber>tempNumber){
+            /*if(sma5Value>sma15Value){
                 spikeNumber++;
             }
-            else if(spikeNumber<tempNumber){
+            else if(sma5Value<sma15Value){
                 spikeNumber++;
             }
             inconsistencyValue *= spikeNumber;
+            stopLossIncon();*/
     }
     public void calculateInconScore(){
         inconScore = (averageValue / (averageValue - inconsistencyValue));
     }
-    public void stopLoss() {
-        //if(averageValue > currentValue too much){
-    //inconsistencyValue -=1?
+    public void stopLossIncon() {
+        //if(sma_5 < sma_15 too much(value)){
+    //sänk värdet av inconScore
     //}
+
+    }
+    public void stopLoss() {
+        //if(sma_15 < sma_50 || sma_15 > sma_50){
+        //ta bort från köp/sälj tabellen dirr
+        //behövs denna metod? Jag tror inte den behövs
+        //}
 
     }
 
